@@ -1,0 +1,33 @@
+{
+  "scope": "published website/workspace smoke; model directory only; no key or paid model call",
+  "reports": [
+    {
+      "name": "desktop",
+      "websiteHTTP": 200,
+      "workspace": "https://accord-line.github.io/accord/",
+      "overflow": false,
+      "errors": [],
+      "failedResources": [],
+      "demoTransform": "matrix(1, 0, 0, 1, 0, -12)",
+      "editorEditable": true,
+      "navigationCount": 4,
+      "modelDirectory": "HTTP 200",
+      "modelCount": 109,
+      "paidCalls": 0
+    },
+    {
+      "name": "mobile",
+      "websiteHTTP": 200,
+      "workspace": "https://accord-line.github.io/accord/",
+      "overflow": false,
+      "errors": [],
+      "failedResources": [],
+      "demoTransform": "matrix(1, 0, 0, 1, 0, -12)",
+      "editorEditable": true,
+      "navigationCount": 4,
+      "modelDirectory": "not-run",
+      "modelCount": 0,
+      "paidCalls": 0
+    }
+  ]
+}

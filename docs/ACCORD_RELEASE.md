@@ -24,7 +24,19 @@
 
 官网本地 Chromium 桌面 1440px、手机 390px、小屏 320px 走查：无横向溢出、无脚本错误、无外部自动请求；键盘切换正常；15px 参数产生真实 `translateY(-15px)`；减少动态偏好关闭位移；示意输入在切换期间保留。详见官网仓库 `VALIDATION.json` 与预览截图。这是开发者走查，不是目标用户研究。
 
-工作空间 `/accord/` 子路径回归：Chromium、Firefox、390px Chromium 共 60/60 通过（3.1 分钟，无重试），原始输出 `ACCORD_E2E_OUTPUT.txt`，报告 `ACCORD_E2E_RESULT.json`。随后仅调整标语断行与英文品牌字号，首屏专项结果另存 `ACCORD_BRAND_SMOKE_OUTPUT.txt`。官网部署工作流已成功，实际访问返回 HTTP 200；工作空间部署及线上联合走查将在本次发布完成后补充。
+工作空间 `/accord/` 子路径回归：Chromium、Firefox、390px Chromium 共 60/60 通过（3.1 分钟，无重试），原始输出 `ACCORD_E2E_OUTPUT.txt`，报告 `ACCORD_E2E_RESULT.json`。随后仅调整标语断行与英文品牌字号，三浏览器首屏专项 3/3 通过，结果另存 `ACCORD_BRAND_SMOKE_OUTPUT.txt` / `ACCORD_BRAND_SMOKE_RESULT.json`。
+
+## 已发布与线上验证
+
+- 官网提交 `3818627`，部署成功：[官网发布工作流](https://github.com/Accord-Line/accord-line.github.io/actions/runs/38860534149)。
+- 工作空间代码提交 `8991d0d`，构建与部署成功：[工作空间发布工作流](https://github.com/Accord-Line/accord/actions/runs/38860881673)。
+- 官网、工作空间、OAuth 静态回调、许可证和 favicon 均返回 HTTP 200。
+- 在真实公开站点完成桌面 1440px 与手机 390px 走查：官网按钮能进入 `/accord/`，正文可编辑，四个主入口正确，未发现横向溢出、脚本错误或站点资源加载失败。官网示意的 12px 参数实际产生向上 12px 的位移。
+- 从生产源读取 TokenDance 公开模型目录，HTTP 200、109 项可选模型；只验证目录，不包含授权或付费模型调用。原始结果在 `ACCORD_ONLINE_VALIDATION.json`，截图 `accord-live-desktop.png` / `accord-live-mobile.png`。
+- GitHub Linux CI 已成功：依赖安装、lint、100 项单测、类型与构建、60 项三浏览器回归均通过。[Accord validation](https://github.com/Accord-Line/accord/actions/runs/38860882681)，机器状态记录 `ACCORD_GITHUB_CI.json`。
+- 后续仅发布文档和检查证据；代码部署仍对应上述提交。文档更新不触发重复部署。
+
+本机与公开站点属于不同源，项目数据不会自动同步。需要继续本机项目时，先从本机“项目数据”导出完整备份，再在公开站点导入。Key 不随备份迁移。
 
 真实有效 Key 的授权、付费模型生成与生产源下服务商 CORS 不包含在上述自动化模拟中；不宣称其已完成验收。M5 完整生命周期追踪仍在完善，外部实现与测试由用户自己的工具执行。
 

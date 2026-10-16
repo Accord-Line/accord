@@ -14,7 +14,7 @@
 
 这是首个公开预览版（0.3.0-preview）。自由编辑、交互预览、人工批准、历史和交接已实现；M5 生命周期追踪仍在完善。真实模型目录及未认证跨域请求有历史验证记录，有效 Key 的付费调用不包含在自动化验收中。最新发布检查见 [发布记录](docs/ACCORD_RELEASE.md)，历史阶段结果见 [M4 验证报告](docs/M2_M4_VALIDATION.md)。
 
-![Markdown 工作空间](docs/m5-first-desktop.png)
+![共识 Accord 在线工作空间](docs/accord-live-desktop.png)
 
 ## 本地运行
 
