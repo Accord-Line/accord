@@ -1,0 +1,26 @@
+[WebServer] (node:40796) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:7512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:40912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › tests\e2e\workspace.spec.ts:29:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (2.5s)
+  ok 2 [chromium] › tests\e2e\workspace.spec.ts:163:1 › reading is a single view; review highlights changes and only expands full documents on request (10.1s)
+  ok 3 [chromium] › tests\e2e\workspace.spec.ts:174:1 › rain and water effects expire, respect pause and reduced motion, and leave writing untouched (7.1s)
+(node:38980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 [firefox] › tests\e2e\workspace.spec.ts:29:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (16.6s)
+  ok 5 [firefox] › tests\e2e\workspace.spec.ts:163:1 › reading is a single view; review highlights changes and only expands full documents on request (37.0s)
+  ok 6 [firefox] › tests\e2e\workspace.spec.ts:174:1 › rain and water effects expire, respect pause and reduced motion, and leave writing untouched (3.4s)
+(node:40340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 7 [mobile] › tests\e2e\workspace.spec.ts:29:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (3.4s)
+  ok 8 [mobile] › tests\e2e\workspace.spec.ts:163:1 › reading is a single view; review highlights changes and only expands full documents on request (3.4s)
+  ok 9 [mobile] › tests\e2e\workspace.spec.ts:174:1 › rain and water effects expire, respect pause and reduced motion, and leave writing untouched (2.7s)
+
+  9 passed (2.4m)

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "0.1.0",
+  "project": {
+    "id": "intentkit-case001",
+    "title": "意译 IntentKit · 示例规范",
+    "description": "基于公开项目能力的工作空间测试案例；不代表对原仓库已有能力的完整审计。",
+    "sourceUrl": "https://github.com/Vibe-Design-Labs/Vibe-UI-UX"
+  },
+  "revision": 1,
+  "intent": "把设计意图变成可理解、可调整、可预览并能交给 Agent 的设计方案。",
+  "requirements": [
+    {
+      "id": "REQ-IK-001",
+      "title": "已有悬停抬升效果可调",
+      "description": "通过受控参数预览悬停抬升，并导出设计描述。",
+      "status": "approved",
+      "constraints": [
+        "lift_px 范围 0–24",
+        "duration_ms 范围 0–1200"
+      ],
+      "acceptanceCriteria": [
+        "调整抬升距离后，悬停视觉反馈发生相应变化。",
+        "参数超出注册表范围时拒绝保存。"
+      ],
+      "experienceIds": [
+        "EXP-IK-001"
+      ],
+      "testIds": [
+        "TEST-IK-001"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "EXP-IK-001",
+      "title": "悬停抬升参数预览",
+      "description": "演示 IntentKit 已公开的 hover-lift 参数契约。此处是 PSW 独立的声明式示例渲染，并非 IntentKit 原 renderer。",
+      "requirementIds": [
+        "REQ-IK-001"
+      ],
+      "state": {
+        "lift_px": 6,
+        "duration_ms": 240,
+        "isHovered": false
+      },
+      "components": [
+        {
+          "id": "CMP-IK-CARD",
+          "type": "card",
+          "label": "悬停查看效果",
+          "stateKey": "isHovered",
+          "props": {
+            "hoverLiftPx": 6,
+            "durationMs": 240
+          },
+          "bindings": {
+            "hoverLiftPx": "lift_px",
+            "durationMs": "duration_ms"
+          }
+        },
+        {
+          "id": "CMP-IK-LIFT",
+          "type": "slider",
+          "label": "抬升距离 px",
+          "stateKey": "lift_px",
+          "props": {
+            "min": 0,
+            "max": 24,
+            "step": 1
+          }
+        },
+        {
+          "id": "CMP-IK-DURATION",
+          "type": "slider",
+          "label": "时长 ms",
+          "stateKey": "duration_ms",
+          "props": {
+            "min": 0,
+            "max": 1200,
+            "step": 20
+          }
+        }
+      ],
+      "events": [
+        {
+          "componentId": "CMP-IK-CARD",
+          "event": "hoverStart",
+          "actions": [
+            {
+              "kind": "setState",
+              "stateKey": "isHovered",
+              "value": true
+            }
+          ]
+        },
+        {
+          "componentId": "CMP-IK-CARD",
+          "event": "hoverEnd",
+          "actions": [
+            {
+              "kind": "setState",
+              "stateKey": "isHovered",
+              "value": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "TEST-IK-001",
+      "requirementId": "REQ-IK-001",
+      "title": "抬升参数变动的可观察效果",
+      "procedure": "把 lift_px 从 6 调到 10，再把指针移至预览卡片。",
+      "expected": "卡片产生相应的抬升，可导出调整后的配置。",
+      "status": "not-run"
+    }
+  ],
+  "decisions": [],
+  "history": [
+    {
+      "revision": 1,
+      "summary": "IntentKit 案例基线（公开事实与独立交互示例）",
+      "source": "import"
+    }
+  ],
+  "evidence": [],
+  "unstructuredNotes": [
+    "IntentKit README 2026-10-15 报告 75 词条、75 预览、5 类配方；此为公开描述快照，不应自动作为未来版本事实。",
+    "新建自定义配方不是在此公开基线中已验证的现有功能。"
+  ]
+}

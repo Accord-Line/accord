@@ -1,0 +1,467 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "volume.spec.ts"
+    ],
+    "configFile": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\playwright.config.ts",
+    "rootDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile",
+        "name": "mobile",
+        "testDir": "C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173/product-spec-workspace/",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "firefox",
+        "testDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173/product-spec-workspace/",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "firefox"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mobile",
+        "testDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\acer\\Documents\\Codex\\2026-10-15\\files-mentioned-by-the-user-acceptance\\outputs\\product-spec-workspace\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4173/product-spec-workspace/",
+          "trace": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "screen": {
+            "width": 393,
+            "height": 851
+          },
+          "deviceScaleFactor": 2.75,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mobile"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/e2e-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run build:pages && npm run preview -- --port 4173 --strictPort --base=/product-spec-workspace/",
+      "url": "http://127.0.0.1:4173/product-spec-workspace/",
+      "reuseExistingServer": false,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "volume.spec.ts",
+      "file": "volume.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "100 extra requirements remain editable without losing approved data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "100-requirements-import-and-edit-ms",
+                  "description": "1104"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1612,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:24:38.206Z",
+                  "annotations": [
+                    {
+                      "type": "100-requirements-import-and-edit-ms",
+                      "description": "1104"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-a8243aa266ffa949b9bf",
+          "file": "volume.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "creates a blank local project and immediately saves a real requirement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2483,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:24:40.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-f9388c2ae81c14c52e2a",
+          "file": "volume.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "100 extra requirements remain editable without losing approved data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "100-requirements-import-and-edit-ms",
+                  "description": "7958"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10416,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:24:43.648Z",
+                  "annotations": [
+                    {
+                      "type": "100-requirements-import-and-edit-ms",
+                      "description": "7958"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-6a9eed52a186b960061a",
+          "file": "volume.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "creates a blank local project and immediately saves a real requirement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4934,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:24:54.858Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-5996e8ccd55c8aa3e898",
+          "file": "volume.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "100 extra requirements remain editable without losing approved data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [
+                {
+                  "type": "100-requirements-import-and-edit-ms",
+                  "description": "1150"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:25:01.798Z",
+                  "annotations": [
+                    {
+                      "type": "100-requirements-import-and-edit-ms",
+                      "description": "1150"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-5f97c07c313d4c92340d",
+          "file": "volume.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "creates a blank local project and immediately saves a real requirement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:25:03.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30685a6c0e3dbeec97fc-fca588be8b594a6679f5",
+          "file": "volume.spec.ts",
+          "line": 28,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T04:24:25.890Z",
+    "duration": 41396.335,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

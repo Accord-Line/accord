@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-15T05:33:05.506Z",
+  "scope": "Actual unauthenticated cross-origin browser probes only. No real key, valid authorization, paid generation or valid model proposal verified.",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.4",
+      "origin": "http://127.0.0.1:5173",
+      "cases": [
+        {
+          "probe": "public-models",
+          "status": 200,
+          "readable": true,
+          "models": 106,
+          "recovery": null
+        },
+        {
+          "probe": "invalid-key-chat",
+          "status": 401,
+          "readable": true,
+          "recovery": "reauthorize_api_key"
+        },
+        {
+          "probe": "invalid-code-exchange",
+          "status": 403,
+          "readable": true,
+          "recovery": null
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "origin": "http://127.0.0.1:5173",
+      "cases": [
+        {
+          "probe": "public-models",
+          "status": 200,
+          "readable": true,
+          "models": 106,
+          "recovery": null
+        },
+        {
+          "probe": "invalid-key-chat",
+          "status": 401,
+          "readable": true,
+          "recovery": "reauthorize_api_key"
+        },
+        {
+          "probe": "invalid-code-exchange",
+          "status": 403,
+          "readable": true,
+          "recovery": null
+        }
+      ]
+    }
+  ]
+}

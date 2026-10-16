@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width,initial-scale=1"><title>返回 共识 Accord</title></head><body><h1>正在返回工作空间</h1><p id="status">此页只传递一次性授权码，不接收或存储 API Key。</p><script>
+const params = new URLSearchParams(location.search);
+const code = params.get('code'), state = params.get('state');
+history.replaceState(null, '', location.pathname);
+if (code && state && window.opener) {
+  window.opener.postMessage({ type: 'psw-token-code', code, state }, location.origin);
+  document.getElementById('status').textContent = '授权码已送回原页面，请回到 共识 Accord。';
+  setTimeout(() => window.close(), 1200);
+} else if (code) {
+  document.getElementById('status').textContent = '请将下方一次性授权码粘贴到原 共识 Accord 页面（10 分钟内有效）。';
+  const field = document.createElement('textarea'); field.readOnly = true; field.value = code; field.setAttribute('aria-label', '一次性授权码'); document.body.appendChild(field);
+} else document.getElementById('status').textContent = '没有收到授权码，可能已取消授权。请回到原页面重试。';
+</script></body></html>

@@ -1,0 +1,24 @@
+{
+  "fixture": "fixed sample, not a real model response",
+  "revision": 2,
+  "files": [
+    "README.md",
+    "AGENTS.md",
+    "CODEX_TASK.md",
+    "workspace.json",
+    "product-spec/project.spec.json",
+    "product-spec/project.json",
+    "product-spec/requirements.md",
+    "product-spec/experiences.json",
+    "product-spec/changes.json",
+    "product-spec/decisions.json",
+    "product-spec/evidence.json",
+    "product-spec/validation.json",
+    "schemas/product-spec.schema.json",
+    "schemas/ai-proposal.schema.json"
+  ],
+  "bytes": 17592,
+  "sha256": "97497d99be6e3c8d6dcbd31800a0da7ba8e28f3b0e3e2d89ea6798af8e585d23",
+  "roundtrip": "pass",
+  "externalImplementation": "not-run"
+}

@@ -1,0 +1,49 @@
+import { test, expect } from '@playwright/test';
+import baseline from '../../examples/intentkit/project.spec.json' with { type: 'json' };
+
+test('100 extra requirements remain editable without losing approved data', async ({ page }) => {
+  page.on('dialog', (d) => void d.accept());
+  await page.goto('./'); await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  const spec = structuredClone(baseline);
+  for (let i = 1; i <= 100; i++) spec.requirements.push({
+    id: `REQ-BULK-${i}`, title: `批量需求 ${i}`, description: `需求 ${i} 的完整说明`, status: 'draft',
+    constraints: [], acceptanceCriteria: ['可以独立编辑与保存'], experienceIds: [], testIds: [],
+  });
+  const start = Date.now();
+  await page.getByLabel('导入规范文件', { exact: true }).setInputFiles({ name: 'large.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(spec)) });
+  await expect(page.getByRole('status')).toContainText('工作空间已载入');
+  await page.getByRole('navigation').getByRole('button', { name: '需求规范', exact: true }).click();
+  await expect(page.locator('article.requirement')).toHaveCount(101);
+  await page.getByRole('button', { name: '编辑 REQ-BULK-50', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('第 50 条已修改');
+  await page.getByRole('button', { name: '保存到草稿', exact: true }).click();
+  await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  await expect(page.getByRole('heading', { name: '第 50 条已修改', exact: true })).toBeVisible();
+  await page.getByRole('navigation').getByRole('button', { name: '规范 JSON', exact: true }).click();
+  expect(JSON.parse((await page.getByLabel('当前规范 JSON').textContent())!)).toEqual(spec);
+  expect(JSON.parse((await page.getByLabel('草稿 JSON').textContent())!).requirements.find((r: { id: string }) => r.id === 'REQ-BULK-50').title).toBe('第 50 条已修改');
+  test.info().annotations.push({ type: '100-requirements-import-and-edit-ms', description: String(Date.now() - start) });
+});
+
+test('creates a blank local project and immediately saves a real requirement', async ({ page }) => {
+  page.on('dialog', (d) => void d.accept());
+  await page.goto('./'); await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  await page.getByRole('navigation').getByRole('button', { name: '导入与备份', exact: true }).click();
+  await page.getByRole('button', { name: '新建项目', exact: true }).click();
+  await page.getByLabel('新项目名称', { exact: true }).fill('自己的真实产品');
+  await page.getByRole('button', { name: '创建项目', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '自己的真实产品', exact: true })).toBeVisible();
+  await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  await page.getByRole('navigation').getByRole('button', { name: '需求规范', exact: true }).click();
+  await expect(page.locator('article.requirement')).toHaveCount(0);
+  await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('第一条真实需求');
+  await page.getByLabel('需求描述', { exact: true }).fill('新项目无需 Key 也能保存需求');
+  await page.getByLabel('验收条件 1', { exact: true }).fill('刷新之后仍能重新编辑');
+  await page.getByRole('button', { name: '保存到草稿', exact: true }).click();
+  await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  await page.reload(); await expect(page.getByTestId('save-status')).toHaveText('已保存到本机');
+  await page.getByRole('navigation').getByRole('button', { name: '需求规范', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '第一条真实需求', exact: true })).toBeVisible();
+  await expect(page.locator('article.requirement')).toHaveCount(1);
+});

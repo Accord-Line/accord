@@ -1,0 +1,242 @@
+import { test, expect, type Page } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
+import baseline from '../../examples/intentkit/project.spec.json' with { type: 'json' };
+import proposal from '../../examples/intentkit/custom-recipe.proposal.json' with { type: 'json' };
+import type { Workspace } from '../../src/domain/types.ts';
+
+async function saved(page: Page) { await expect(page.getByTestId('save-status')).toHaveText('已保存到本机'); }
+async function nav(page: Page, name: string) { await page.getByRole('navigation').getByRole('button', { name, exact: true }).click(); }
+async function add(page: Page, title: string) {
+  await nav(page, '需求规范');
+  await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await expect(page.getByLabel('需求标题', { exact: true })).toBeFocused();
+  await page.getByLabel('需求标题', { exact: true }).fill(title);
+  await page.getByLabel('需求描述', { exact: true }).fill(`${title}的描述`);
+  await page.getByLabel('验收条件 1', { exact: true }).fill(`${title}的验收`);
+  await page.getByRole('button', { name: '保存到草稿', exact: true }).click();
+  await expect(page.getByRole('region', { name: '需求编辑表单' })).toHaveCount(0);
+  await saved(page);
+}
+async function stored(page: Page): Promise<Workspace> {
+  return page.evaluate(() => new Promise<Workspace>((resolve, reject) => {
+    const request = indexedDB.open('psw-local-workspace', 1);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const db = request.result, tx = db.transaction('workspaces');
+      const get = tx.objectStore('workspaces').get('active');
+      get.onsuccess = () => resolve(get.result.value as Workspace);
+      get.onerror = () => reject(get.error);
+      tx.oncomplete = () => db.close();
+    };
+  }));
+}
+test.beforeEach(async ({ page }) => {
+  page.on('dialog', (dialog) => void dialog.accept());
+  await page.goto('./'); await saved(page);
+});
+
+test('repository-path baseline, visible BYOK status, no external requests or runtime errors', async ({ page }, info) => {
+  const errors: string[] = [], external: string[] = [], badResponses: number[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('request', (r) => { if (!r.url().startsWith('http://127.0.0.1:4173/')) external.push(r.url()); });
+  page.on('response', (r) => { if (r.status() >= 400) badResponses.push(r.status()); });
+  await page.reload(); await saved(page);
+  await expect(page.getByRole('heading', { name: baseline.project.title, exact: true })).toBeVisible();
+  await expect(page.getByText('实现未验证', { exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  if (info.project.name !== 'firefox') await page.screenshot({ path: `docs/m1-overview-${info.project.name}.png`, fullPage: true });
+  await nav(page, 'AI / BYOK');
+  await expect(page.getByRole('heading', { name: 'BYOK · 使用自己的模型' })).toBeVisible();
+  await expect(page.getByText('M3 · 尚未接入', { exact: true })).toBeVisible();
+  expect(await page.locator('input[type=password]').count()).toBe(0);
+  if (info.project.name === 'chromium') await page.screenshot({ path: 'docs/m1-byok-status.png', fullPage: true });
+  expect(errors).toEqual([]); expect(external).toEqual([]); expect(badResponses).toEqual([]);
+});
+
+test('five independently editable requirements survive refresh, cancel leaves no placeholder', async ({ page }, info) => {
+  for (let i = 1; i <= 5; i++) await add(page, `独立需求 ${i}`);
+  await page.getByRole('button', { name: '编辑 REQ-103', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('第三条已修改');
+  await page.getByRole('button', { name: '保存到草稿', exact: true }).click(); await saved(page);
+  await page.reload(); await saved(page); await nav(page, '需求规范');
+  await expect(page.getByRole('heading', { name: '独立需求 1', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '第三条已修改', exact: true })).toBeVisible();
+  expect((await stored(page)).draft.requirements).toHaveLength(6);
+  expect((await stored(page)).approved).toEqual(baseline);
+  await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('取消后不应留下');
+  if (info.project.name !== 'firefox') await page.screenshot({ path: `docs/m1-editor-${info.project.name}.png`, fullPage: true });
+  await page.getByRole('button', { name: '取消编辑', exact: true }).click(); await saved(page);
+  expect((await stored(page)).draft.requirements).toHaveLength(6);
+  await expect(page.getByRole('heading', { name: '取消后不应留下' })).toHaveCount(0);
+  await page.getByRole('button', { name: '编辑 REQ-101', exact: true }).click();
+  await expect(page.getByLabel('需求标题', { exact: true })).toHaveValue('独立需求 1');
+  await page.getByRole('button', { name: '取消编辑', exact: true }).click(); await saved(page);
+});
+
+test('unfinished form restores separately; incomplete saved draft cannot be approved', async ({ page }) => {
+  await nav(page, '需求规范'); await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await page.getByLabel('需求描述', { exact: true }).fill('未填完也能恢复'); await saved(page);
+  await page.reload(); await saved(page); await nav(page, '需求规范');
+  await expect(page.getByLabel('需求描述', { exact: true })).toHaveValue('未填完也能恢复');
+  expect((await stored(page)).draft.requirements).toHaveLength(1);
+  await page.getByRole('button', { name: '保存到草稿', exact: true }).click(); await saved(page);
+  await nav(page, 'Diff 与审批'); await page.getByLabel('审批说明', { exact: true }).fill('不完整应阻止');
+  await expect(page.getByRole('button', { name: '批准并创建 r2', exact: true })).toBeDisabled();
+  await expect(page.getByRole('alert')).toContainText('/requirements/1/title');
+  expect((await stored(page)).approved.revision).toBe(1);
+});
+
+test('sorting, archiving, deletion impact, undo and redo preserve stable IDs and references', async ({ page }) => {
+  await add(page, '排序甲'); await add(page, '排序乙');
+  await page.getByRole('button', { name: '上移 REQ-102', exact: true }).click(); await saved(page);
+  expect((await stored(page)).draft.requirements[1].id).toBe('REQ-102');
+  await page.getByRole('button', { name: '归档 REQ-102', exact: true }).click(); await saved(page);
+  expect((await stored(page)).draft.requirements[1].status).toBe('deprecated');
+  await page.getByRole('button', { name: '撤销', exact: true }).click(); await saved(page);
+  await page.getByRole('button', { name: '重做', exact: true }).click(); await saved(page);
+  expect((await stored(page)).draft.requirements[1].status).toBe('deprecated');
+  let impact = '';
+  page.removeAllListeners('dialog'); page.once('dialog', async (d) => { impact = d.message(); await d.accept(); });
+  await page.getByRole('button', { name: '删除 REQ-IK-001', exact: true }).click(); await saved(page);
+  expect(impact).toContain('EXP-IK-001'); expect(impact).toContain('TEST-IK-001');
+  expect((await stored(page)).draft.tests).toEqual([]);
+  expect((await stored(page)).draft.experiences[0].requirementIds).toEqual([]);
+  await page.getByRole('button', { name: '撤销', exact: true }).click(); await saved(page);
+  expect((await stored(page)).draft.tests).toEqual(baseline.tests);
+});
+
+test('approved export excludes drafts; explicit approval creates r2 and rollback creates r3', async ({ page }) => {
+  await add(page, '人工批准的新需求');
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: '↓ 导出已批准 JSON', exact: true }).click();
+  const download = await downloadPromise;
+  expect(JSON.parse(await readFile((await download.path())!, 'utf8'))).toEqual(baseline);
+  await nav(page, 'Diff 与审批'); await expect(page.getByText('/requirements/REQ-101', { exact: true })).toBeVisible();
+  await page.getByLabel('审批说明', { exact: true }).fill('人工确认新增内容');
+  await page.getByRole('button', { name: '批准并创建 r2', exact: true }).click(); await saved(page);
+  await expect(page.getByTestId('approved-revision')).toHaveText('已批准 r2');
+  await nav(page, '版本历史'); await page.getByRole('button', { name: '回退至 r1', exact: true }).click(); await saved(page);
+  const w = await stored(page); expect(w.approved.revision).toBe(3); expect(w.approved.requirements).toEqual(baseline.requirements);
+  expect(w.approved.history.map((h) => h.revision)).toEqual([1, 2, 3]); expect(w.snapshots).toHaveLength(3);
+});
+
+test('fixed proposal can be rejected or approved atomically, then stale and illegal proposals are blocked', async ({ page }) => {
+  await nav(page, 'AI / BYOK'); await page.getByRole('button', { name: '载入固定样例（非模型）', exact: true }).click(); await saved(page);
+  expect((await stored(page)).approved).toEqual(baseline);
+  await expect(page.getByText('/experiences/EXP-IK-002', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '拒绝提案', exact: true }).click(); await saved(page);
+  expect((await stored(page)).approved.revision).toBe(1); expect((await stored(page)).reviews[0].source).toBe('rejected');
+  await nav(page, 'AI / BYOK'); await page.getByRole('button', { name: '载入固定样例（非模型）', exact: true }).click();
+  await page.getByLabel('审批说明', { exact: true }).fill('审阅固定候选');
+  await page.getByRole('button', { name: '批准并创建 r2', exact: true }).click(); await saved(page);
+  expect((await stored(page)).approved.tests).toHaveLength(2);
+  expect((await stored(page)).approved.tests.every((t) => t.status === 'not-run')).toBe(true);
+  await nav(page, 'AI / BYOK'); await page.getByRole('button', { name: '载入固定样例（非模型）', exact: true }).click(); await saved(page);
+  await expect(page.getByRole('alert')).toContainText('stale');
+  await page.getByLabel('审批说明', { exact: true }).fill('不能批准陈旧版本');
+  await expect(page.getByRole('button', { name: '批准并创建 r3', exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: '拒绝提案', exact: true }).click(); await saved(page);
+  await nav(page, 'AI / BYOK');
+  await page.getByLabel('提案 JSON', { exact: true }).fill(JSON.stringify({ ...proposal, operations: [{ op: 'exec', script: 'alert(1)' }] }));
+  await page.getByRole('button', { name: '校验并审阅提案', exact: true }).click();
+  await expect(page.getByRole('alert')).toBeVisible(); expect((await stored(page)).approved.revision).toBe(2);
+});
+
+test('JSON and ZIP backup round-trip pending form, draft, versions and IDs', async ({ page }) => {
+  await add(page, '已确定需求'); await nav(page, 'Diff 与审批');
+  await page.getByLabel('审批说明', { exact: true }).fill('创建第二版'); await page.getByRole('button', { name: '批准并创建 r2', exact: true }).click(); await saved(page);
+  await add(page, '未批准需求'); await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('未完成表单'); await saved(page);
+  const before = await stored(page);
+  await nav(page, '导入与备份');
+  const jsonEvent = page.waitForEvent('download'); await page.getByRole('button', { name: '导出完整 JSON 备份', exact: true }).click();
+  const json = await readFile((await (await jsonEvent).path())!); expect(JSON.parse(json.toString('utf8'))).toEqual(before);
+  const zipEvent = page.waitForEvent('download'); await page.getByRole('button', { name: '导出完整 ZIP 备份', exact: true }).click();
+  const zip = await readFile((await (await zipEvent).path())!);
+  await page.getByRole('button', { name: '打开 IntentKit 示例', exact: true }).click(); await saved(page);
+  expect((await stored(page)).approved.revision).toBe(1);
+  await page.getByLabel('导入规范文件', { exact: true }).setInputFiles({ name: 'backup.zip', mimeType: 'application/zip', buffer: zip }); await saved(page);
+  await expect.poll(async () => (await stored(page)).approved.revision).toBe(2);
+  expect(await stored(page)).toEqual(before);
+  await page.getByLabel('导入规范文件', { exact: true }).setInputFiles({ name: 'backup.json', mimeType: 'application/json', buffer: json });
+  await expect(page.getByRole('status')).toContainText('工作空间已载入'); await saved(page);
+  expect(await stored(page)).toEqual(before);
+});
+
+test('Markdown preserves original notes and malicious imports never execute or replace data', async ({ page }) => {
+  const text = '# 原始笔记\n\n<script>window.pwned=true</script>\n\n未知章节完整保留。\n';
+  await page.getByLabel('导入规范文件', { exact: true }).setInputFiles({ name: 'notes.md', mimeType: 'text/markdown', buffer: Buffer.from(text) });
+  await expect(page.getByRole('heading', { name: '原始笔记', exact: true })).toBeVisible(); await saved(page);
+  const w = await stored(page); expect(w.draft.unstructuredNotes).toEqual([text]); expect(w.approved.unstructuredNotes).toEqual([]);
+  expect(await page.evaluate(() => Object.hasOwn(window, 'pwned'))).toBe(false);
+  for (const data of ['{', '{"__proto__":{"polluted":true}}', JSON.stringify({ ...baseline, schemaVersion: '99' })]) {
+    await page.getByLabel('导入规范文件', { exact: true }).setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from(data) });
+    await expect(page.getByRole('alert')).toContainText('当前规范保持不变'); expect(await stored(page)).toEqual(w);
+  }
+});
+
+test('offline editing, approval and export work after assets loaded', async ({ page, context }) => {
+  await context.setOffline(true); await add(page, '断网新增'); await nav(page, 'Diff 与审批');
+  await page.getByLabel('审批说明', { exact: true }).fill('无网络完成审批'); await page.getByRole('button', { name: '批准并创建 r2', exact: true }).click(); await saved(page);
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '↓ 导出已批准 JSON', exact: true }).click();
+  expect(JSON.parse(await readFile((await (await download).path())!, 'utf8')).requirements).toHaveLength(2);
+});
+
+test('two tabs detect stale saves and preserve both local backup and current database version', async ({ page, context }) => {
+  const second = await context.newPage(); second.on('dialog', (d) => void d.accept()); await second.goto('./'); await saved(second);
+  await add(page, '标签页 A');
+  await nav(second, '需求规范'); await second.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await expect(second.getByTestId('save-status')).toHaveText('版本冲突 · 已停止写入');
+  await expect(second.getByRole('alert')).toContainText('其他标签页已保存更新');
+  expect((await stored(page)).draft.requirements[1].title).toBe('标签页 A');
+  const download = second.waitForEvent('download'); await second.getByRole('button', { name: '导出本页完整备份', exact: true }).click();
+  const local = JSON.parse(await readFile((await (await download).path())!, 'utf8')) as Workspace;
+  expect(local.editor?.isNew).toBe(true);
+  await second.getByRole('button', { name: '载入最新版本', exact: true }).click(); await saved(second);
+  expect((await stored(second)).draft.requirements[1].title).toBe('标签页 A');
+});
+
+test('quota failure retains in-memory edits, does not fake saved or approved, and can retry', async ({ page }) => {
+  await page.evaluate(() => {
+    const original = IDBObjectStore.prototype.put;
+    Object.defineProperty(window, '__pswFailWrites', { value: true, writable: true });
+    IDBObjectStore.prototype.put = function (value: unknown, key?: IDBValidKey) {
+      if ((window as unknown as Record<string, unknown>).__pswFailWrites) throw new DOMException('测试存储配额不足', 'QuotaExceededError');
+      return original.call(this, value, key);
+    };
+  });
+  await nav(page, '需求规范'); await page.getByRole('button', { name: '＋ 新增需求', exact: true }).click();
+  await page.getByLabel('需求标题', { exact: true }).fill('磁盘失败仍保留');
+  await expect(page.getByTestId('save-status')).toHaveText('本地保存失败');
+  expect((await stored(page)).editor).toBeNull(); expect((await stored(page)).approved.revision).toBe(1);
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '导出本页完整备份', exact: true }).click();
+  const local = JSON.parse(await readFile((await (await download).path())!, 'utf8')) as Workspace;
+  expect(local.editor!.requirement.title).toBe('磁盘失败仍保留');
+  await page.evaluate(() => { (window as unknown as Record<string, unknown>).__pswFailWrites = false; });
+  await page.getByRole('button', { name: '重试保存', exact: true }).click(); await saved(page);
+  expect((await stored(page)).editor!.requirement.title).toBe('磁盘失败仍保留');
+});
+
+test('corrupt storage is retained and explicit recovery archives the original record', async ({ page }) => {
+  await page.evaluate(() => new Promise<void>((resolve) => {
+    const request = indexedDB.open('psw-local-workspace', 1); request.onsuccess = () => {
+      const db = request.result, tx = db.transaction('workspaces', 'readwrite'); tx.objectStore('workspaces').put({ damaged: 'original' }, 'active'); tx.oncomplete = () => { db.close(); resolve(); };
+    };
+  }));
+  await page.reload(); await expect(page.getByRole('alert')).toContainText('本地记录损坏');
+  const download = page.waitForEvent('download'); await page.getByRole('button', { name: '导出原始存储记录', exact: true }).click();
+  expect(JSON.parse(await readFile((await (await download).path())!, 'utf8'))).toEqual({ damaged: 'original' });
+  await page.getByRole('button', { name: '保留损坏副本并恢复示例', exact: true }).click(); await saved(page);
+  expect((await stored(page)).approved).toEqual(baseline);
+  const count = await page.evaluate(() => new Promise<number>((resolve) => { const req = indexedDB.open('psw-local-workspace', 1); req.onsuccess = () => { const db = req.result, tx = db.transaction('workspaces'); const request = tx.objectStore('workspaces').count(); request.onsuccess = () => resolve(request.result); tx.oncomplete = () => db.close(); }; }));
+  expect(count).toBe(2);
+});
+
+test('baseline 6px / 240ms preview still works with pointer and keyboard', async ({ page }, info) => {
+  await nav(page, '交互样例'); await expect(page.getByText('6px · 240ms')).toBeVisible();
+  const card = page.getByTestId('hover-card');
+  if (info.project.name === 'mobile') await card.focus(); else await card.hover();
+  await expect(card).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, -6)');
+  await expect(card).toHaveCSS('transition-duration', '0.24s');
+});

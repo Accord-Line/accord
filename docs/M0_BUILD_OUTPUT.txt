@@ -1,0 +1,25 @@
+
+> product-spec-workspace@0.1.0-m0 build:pages
+> npm run build -- --base=/product-spec-workspace/
+
+
+> product-spec-workspace@0.1.0-m0 build
+> npm run check:types && npm run typecheck && vite build --base=/product-spec-workspace/
+
+
+> product-spec-workspace@0.1.0-m0 check:types
+> node scripts/generate-types.mjs --check
+
+
+> product-spec-workspace@0.1.0-m0 typecheck
+> tsc --noEmit
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 210 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.63 kB │ gzip:   0.42 kB
+dist/assets/index-hKxANGDm.css   11.96 kB │ gzip:   3.49 kB
+dist/assets/index-BysdJoYl.js   393.85 kB │ gzip: 123.09 kB
+✓ built in 1.47s

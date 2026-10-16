@@ -1,0 +1,142 @@
+{
+  "proposalId": "CR-IK-CUSTOM-RECIPE-001",
+  "baseRevision": 1,
+  "summary": "新增用户自定义设计配方（自然语言或手动配置）",
+  "rationale": "用户需在单份 PRD 中持续编辑、预览、导出可实现的交互，而不仅看已存在的模板。",
+  "risks": [
+    "AI 生成的描述不必然能被现有 IntentKit renderer 执行；不支持的效果必须显示限制。",
+    "不能将本提案视为已修改 IntentKit 原仓库。"
+  ],
+  "operations": [
+    {
+      "op": "addRequirement",
+      "requirement": {
+        "id": "REQ-IK-002",
+        "title": "通过自然语言或手动配置创建自定义配方",
+        "description": "用户可以描述或手动填写配方的名称、用途、参数、约束与触发条件，进行可操作预览和导出。",
+        "status": "approved",
+        "constraints": [
+          "自然语言方案仅作为候选提案",
+          "不支持的效果必须显式标明",
+          "导出不等于已合并到 IntentKit"
+        ],
+        "acceptanceCriteria": [
+          "无 Key 时能够使用手动模式创建、保存、调整和导出配方。",
+          "使用 BYOK 时可收到结构化候选配方并手动修改。",
+          "参数变动可观察地更新预览，违规输入被拒绝。",
+          "未批准时不能覆盖 approved 规范。"
+        ],
+        "experienceIds": [
+          "EXP-IK-002"
+        ],
+        "testIds": [
+          "TEST-IK-002"
+        ]
+      }
+    },
+    {
+      "op": "addExperience",
+      "experience": {
+        "id": "EXP-IK-002",
+        "title": "自定义配方表单与预览",
+        "description": "以 PSW 受控组件演示配方创建与参数调整，真实视觉实现仍需仓库工程验证。",
+        "requirementIds": [
+          "REQ-IK-002"
+        ],
+        "state": {
+          "recipeName": "",
+          "lift_px": 6,
+          "duration_ms": 240,
+          "isReady": false
+        },
+        "components": [
+          {
+            "id": "CMP-IK-RECIPE-NAME",
+            "type": "textInput",
+            "label": "配方名称",
+            "stateKey": "recipeName",
+            "props": {
+              "placeholder": "例如：轻盈卡片"
+            },
+            "validation": {
+              "required": true,
+              "minLength": 2
+            }
+          },
+          {
+            "id": "CMP-IK-RECIPE-LIFT",
+            "type": "slider",
+            "label": "抬升距离",
+            "stateKey": "lift_px",
+            "props": {
+              "min": 0,
+              "max": 24,
+              "step": 1
+            }
+          },
+          {
+            "id": "CMP-IK-RECIPE-DURATION",
+            "type": "slider",
+            "label": "动画时长",
+            "stateKey": "duration_ms",
+            "props": {
+              "min": 0,
+              "max": 1200,
+              "step": 20
+            }
+          },
+          {
+            "id": "CMP-IK-RECIPE-SAVE",
+            "type": "button",
+            "label": "校验并预览",
+            "stateKey": null,
+            "props": {}
+          },
+          {
+            "id": "CMP-IK-RECIPE-STATUS",
+            "type": "statusMessage",
+            "label": "预览结果",
+            "stateKey": "isReady",
+            "props": {}
+          }
+        ],
+        "events": [
+          {
+            "componentId": "CMP-IK-RECIPE-SAVE",
+            "event": "click",
+            "actions": [
+              {
+                "kind": "validateFields",
+                "stateKeys": [
+                  "recipeName",
+                  "lift_px",
+                  "duration_ms"
+                ]
+              },
+              {
+                "kind": "setState",
+                "stateKey": "isReady",
+                "value": true
+              },
+              {
+                "kind": "showMessage",
+                "message": "配方参数校验通过，可继续预览"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "op": "addTest",
+      "test": {
+        "id": "TEST-IK-002",
+        "requirementId": "REQ-IK-002",
+        "title": "自定义配方创建与导出",
+        "procedure": "手动输入配方名称，设置 10px、240ms，点击预览并导出；随后测试空名称和越界参数。",
+        "expected": "合法配置可预览与导出；非法输入出现可理解的提示；AI 提案未批准前不修改 approved。",
+        "status": "not-run"
+      }
+    }
+  ]
+}

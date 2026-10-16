@@ -1,0 +1,213 @@
+
+> product-spec-workspace@0.2.0-m4-preview test:e2e
+> playwright test
+
+[WebServer] (node:34196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:38172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 54 tests using 1 worker
+
+(node:34224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › tests\e2e\workspace.spec.ts:28:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (4.2s)
+  ok  2 [chromium] › tests\e2e\workspace.spec.ts:40:1 › five free-written requirements, incomplete typing, edit and refresh preserve stable indices (3.5s)
+  ok  3 [chromium] › tests\e2e\workspace.spec.ts:50:1 › offline editing, undo/redo, explicit approval and rollback make real new revisions (2.3s)
+  ok  4 [chromium] › tests\e2e\workspace.spec.ts:58:1 › real controls change hover transform, review data and handoff reimport keeps parameters (4.3s)
+  ok  5 [chromium] › tests\e2e\workspace.spec.ts:73:1 › fixed proposal is explicitly imported, recipe validation blocks success, approved r2 has complete links (2.0s)
+  ok  6 [chromium] › tests\e2e\workspace.spec.ts:83:1 › simulated BYOK response creates a candidate only; Key absent from storage and exports, cleared after reload (3.0s)
+  ok  7 [chromium] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 401 keeps text, sends once and shows useful failure (1.5s)
+  ok  8 [chromium] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 429 keeps text, sends once and shows useful failure (1.5s)
+  ok  9 [chromium] › tests\e2e\workspace.spec.ts:97:1 › simulated network and invalid proposal never replace manual prose or create false success (1.7s)
+  ok 10 [chromium] › tests\e2e\workspace.spec.ts:102:1 › editing while a simulated model request is running makes candidate stale (1.5s)
+  ok 11 [chromium] › tests\e2e\workspace.spec.ts:110:1 › simulated PKCE popup callback exchanges code and verifier without persisting credentials (678ms)
+  ok 12 [chromium] › tests\e2e\workspace.spec.ts:118:1 › malicious imports leave original data and do not execute Markdown scripts (1.3s)
+  ok 13 [chromium] › tests\e2e\workspace.spec.ts:123:1 › two tabs detect CAS conflict and preserve the unsaved page for backup (2.3s)
+  ok 14 [chromium] › tests\e2e\workspace.spec.ts:129:1 › 100 requirements stay directly editable and Markdown import becomes the actual document (2.6s)
+  ok 15 [chromium] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus (2.1s)
+  ok 16 [chromium] › tests\e2e\workspace.spec.ts:142:1 › reduced motion is explicit and imported image URLs require a user click (1.4s)
+  ok 17 [chromium] › tests\e2e\workspace.spec.ts:146:1 › candidate can become editable prose before any approval and can still be rejected (2.1s)
+  ok 18 [chromium] › tests\e2e\workspace.spec.ts:152:1 › cancelling a slow simulated request records its stage and elapsed time once without leaking a key (2.1s)
+(node:35288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 19 [firefox] › tests\e2e\workspace.spec.ts:28:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (13.0s)
+  ok 20 [firefox] › tests\e2e\workspace.spec.ts:40:1 › five free-written requirements, incomplete typing, edit and refresh preserve stable indices (5.3s)
+  ok 21 [firefox] › tests\e2e\workspace.spec.ts:50:1 › offline editing, undo/redo, explicit approval and rollback make real new revisions (3.9s)
+  ok 22 [firefox] › tests\e2e\workspace.spec.ts:58:1 › real controls change hover transform, review data and handoff reimport keeps parameters (4.4s)
+  ok 23 [firefox] › tests\e2e\workspace.spec.ts:73:1 › fixed proposal is explicitly imported, recipe validation blocks success, approved r2 has complete links (5.0s)
+  ok 24 [firefox] › tests\e2e\workspace.spec.ts:83:1 › simulated BYOK response creates a candidate only; Key absent from storage and exports, cleared after reload (4.3s)
+  ok 25 [firefox] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 401 keeps text, sends once and shows useful failure (2.5s)
+  ok 26 [firefox] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 429 keeps text, sends once and shows useful failure (3.4s)
+  ok 27 [firefox] › tests\e2e\workspace.spec.ts:97:1 › simulated network and invalid proposal never replace manual prose or create false success (2.3s)
+  ok 28 [firefox] › tests\e2e\workspace.spec.ts:102:1 › editing while a simulated model request is running makes candidate stale (2.7s)
+  ok 29 [firefox] › tests\e2e\workspace.spec.ts:110:1 › simulated PKCE popup callback exchanges code and verifier without persisting credentials (1.5s)
+  ok 30 [firefox] › tests\e2e\workspace.spec.ts:118:1 › malicious imports leave original data and do not execute Markdown scripts (1.9s)
+  ok 31 [firefox] › tests\e2e\workspace.spec.ts:123:1 › two tabs detect CAS conflict and preserve the unsaved page for backup (50.2s)
+  ok 32 [firefox] › tests\e2e\workspace.spec.ts:129:1 › 100 requirements stay directly editable and Markdown import becomes the actual document (48.7s)
+  x  33 [firefox] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus (1.3m)
+(node:35680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 34 [firefox] › tests\e2e\workspace.spec.ts:142:1 › reduced motion is explicit and imported image URLs require a user click (14.2s)
+  ok 35 [firefox] › tests\e2e\workspace.spec.ts:146:1 › candidate can become editable prose before any approval and can still be rejected (4.5s)
+  ok 36 [firefox] › tests\e2e\workspace.spec.ts:152:1 › cancelling a slow simulated request records its stage and elapsed time once without leaking a key (3.6s)
+(node:34356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 37 [mobile] › tests\e2e\workspace.spec.ts:28:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (2.0s)
+  ok 38 [mobile] › tests\e2e\workspace.spec.ts:40:1 › five free-written requirements, incomplete typing, edit and refresh preserve stable indices (2.4s)
+  ok 39 [mobile] › tests\e2e\workspace.spec.ts:50:1 › offline editing, undo/redo, explicit approval and rollback make real new revisions (2.1s)
+  ok 40 [mobile] › tests\e2e\workspace.spec.ts:58:1 › real controls change hover transform, review data and handoff reimport keeps parameters (4.1s)
+  ok 41 [mobile] › tests\e2e\workspace.spec.ts:73:1 › fixed proposal is explicitly imported, recipe validation blocks success, approved r2 has complete links (1.9s)
+  ok 42 [mobile] › tests\e2e\workspace.spec.ts:83:1 › simulated BYOK response creates a candidate only; Key absent from storage and exports, cleared after reload (2.9s)
+  ok 43 [mobile] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 401 keeps text, sends once and shows useful failure (1.3s)
+  ok 44 [mobile] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 429 keeps text, sends once and shows useful failure (1.5s)
+  ok 45 [mobile] › tests\e2e\workspace.spec.ts:97:1 › simulated network and invalid proposal never replace manual prose or create false success (1.6s)
+  ok 46 [mobile] › tests\e2e\workspace.spec.ts:102:1 › editing while a simulated model request is running makes candidate stale (1.9s)
+  ok 47 [mobile] › tests\e2e\workspace.spec.ts:110:1 › simulated PKCE popup callback exchanges code and verifier without persisting credentials (1.3s)
+  ok 48 [mobile] › tests\e2e\workspace.spec.ts:118:1 › malicious imports leave original data and do not execute Markdown scripts (1.3s)
+  ok 49 [mobile] › tests\e2e\workspace.spec.ts:123:1 › two tabs detect CAS conflict and preserve the unsaved page for backup (2.7s)
+  ok 50 [mobile] › tests\e2e\workspace.spec.ts:129:1 › 100 requirements stay directly editable and Markdown import becomes the actual document (3.6s)
+  ok 51 [mobile] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus (2.0s)
+  ok 52 [mobile] › tests\e2e\workspace.spec.ts:142:1 › reduced motion is explicit and imported image URLs require a user click (1.6s)
+  ok 53 [mobile] › tests\e2e\workspace.spec.ts:146:1 › candidate can become editable prose before any approval and can still be rejected (2.1s)
+  ok 54 [mobile] › tests\e2e\workspace.spec.ts:152:1 › cancelling a slow simulated request records its stage and elapsed time once without leaking a key (1.8s)
+
+
+  1) [firefox] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByTestId('save-status')
+    Expected: "已保存到本机"
+    Received: "待保存"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByTestId('save-status') with timeout 5000ms
+      - waiting for getByTestId('save-status')
+        - locator resolved to <span role="status" data-testid="save-status">待保存</span>
+        - unexpected value "待保存"
+
+
+       5 | import proposal from '../../examples/intentkit/custom-recipe.proposal.json' with { type: 'json' };
+       6 | import type { Workspace } from '../../src/domain/types';
+    >  7 | async function saved(p: Page) { await expect(p.getByTestId('save-status')).toHaveText('已保存到本机'); }
+         |                                                                            ^
+       8 | async function nav(p: Page, name: string) { await p.getByRole('navigation').getByRole('button', { name, exact: true }).click(); }
+       9 | async function stored(p: Page): Promise<Workspace> {
+      10 |   return p.evaluate(() => new Promise<Workspace>((resolve, reject) => {
+        at saved (C:\Users\acer\Documents\Codex\2026-10-15\files-mentioned-by-the-user-acceptance\outputs\product-spec-workspace\tests\e2e\workspace.spec.ts:7:76)
+        at C:\Users\acer\Documents\Codex\2026-10-15\files-mentioned-by-the-user-acceptance\outputs\product-spec-workspace\tests\e2e\workspace.spec.ts:137:194
+
+    Tearing down "context" exceeded the test timeout of 60000ms.
+
+    Error: browserContext.close: Test ended.
+    Browser logs:
+
+    <launching> C:\Users\acer\Documents\Codex\2026-10-15\files-mentioned-by-the-user-acceptance\work\pw-browsers\firefox-1555\firefox\firefox.exe -no-remote -headless -profile C:\Users\acer\AppData\Local\Temp\playwright_firefoxdev_profile-EvSQzL -juggler-pipe -silent
+    <launched> pid=37152
+    [pid=37152][err] *** You are running in headless mode.
+    [pid=37152][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 125: unreachable code after return statement
+    [pid=37152][out] 
+    [pid=37152][out] Juggler listening to the pipe
+    [pid=37152][err] [WARN  rkv::backend::impl_safe::environment] `load_ratio()` is irrelevant for this storage backend.
+    [pid=37152][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=1.13505) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.warn: services.settings: #fetchAttachment: Forcing fallbackToDump to false due to Utils.LOAD_DUMPS being false
+    [pid=37152][out] console.error: (new NotFoundError("Could not find fa0fc42c-d91d-fca7-34eb-806ff46062dc in cache or dump", "resource://services-settings/Attachments.sys.mjs", 48))
+    [pid=37152][out] console.warn: "Unable to find the attachment for" "fa0fc42c-d91d-fca7-34eb-806ff46062dc"
+    [pid=37152][err] [ERROR shell_windows::limited_access_features] Error generating feature token: NS_ERROR_FAILURE
+    [pid=37152][out] console.error: "Error fetching the wallpaper attachments URL" (new SyntaxError("JSON.parse: unexpected end of data at line 1 column 1 of the JSON data", ""))
+    [pid=37152][out] console.error: services.settings: 
+    [pid=37152][out]   Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synced yet
+    [pid=37152][out]   Stack:
+    [pid=37152][out]     EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5
+    [pid=37152][out] list@resource://services-settings/Database.sys.mjs:96:13
+    [pid=37152][out] 
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript warning: http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js, line 9: Script terminated by timeout at:
+    [pid=37152][err] Lb@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:9:42461
+    [pid=37152][err] EventListener.handleEvent*Hm@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:8:141297
+    [pid=37152][err] Cc@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:8:140771
+    [pid=37152][err] Fb/kc/<@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:8:140948
+    [pid=37152][err] kc@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:8:140882
+    [pid=37152][err] Fb/or.createRoot@http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:9:50565
+    [pid=37152][err] @http://127.0.0.1:4173/product-spec-workspace/assets/index-cdJuvNo0.js:109:17836
+    [pid=37152][err] 
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.error: services.settings: 
+    [pid=37152][out]   Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synced yet
+    [pid=37152][out]   Stack:
+    [pid=37152][out]     EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5
+    [pid=37152][out] list@resource://services-settings/Database.sys.mjs:96:13
+    [pid=37152][out] 
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.error: [Exception... "Favicon at "http://127.0.0.1:4173/favicon.ico" failed to load."  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "JS frame :: resource:///modules/FaviconLoader.sys.mjs :: onStopRequest :: line 282"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.error: [Exception... "Favicon at "https://tokendance.space/favicon.ico" failed to load."  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "JS frame :: resource:///modules/FaviconLoader.sys.mjs :: onStopRequest :: line 282"  data: no]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.error: [Exception... "Favicon at "http://127.0.0.1:4173/favicon.ico" failed to load."  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "JS frame :: resource:///modules/FaviconLoader.sys.mjs :: onStopRequest :: line 282"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: "Could not download new icon" (new ServerInfoError("Server response is invalid SyntaxError: JSON.parse: unexpected end of data at line 1 column 1 of the JSON data", "resource://services-settings/Attachments.sys.mjs", 40))
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "<unknown>"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/oauth-callback.html" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "<unknown>"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/oauth-callback.html?state=3367d238-bf29-44eb-8634-20dfddd79946&code=fake-one-use-code" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "<unknown>"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "https://tokendance.space/auth?app_url=app%3A%2F%2Fpsw-product-specification-workspace&key_name=PSW+%E4%BA%A7%E5%93%81%E8%A7%84%E8%8C%83%E5%8D%8F%E4%BD%9C&code_challenge=J1rDV58SySyF7PO-HG76EVe_ZkigZwzFeM5ErxvsvAA&code_challenge_method=S256&callback_url=http%3A%2F%2F127.0.0.1%3A4173%2Fproduct-spec-workspace%2Foauth-callback.html%3Fstate%3D3367d238-bf29-44eb-8634-20dfddd79946" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "<unknown>"  data: no]
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] console.error: [Exception... "Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIWinTaskbar.getTaskbarProgress]"  nsresult: "0x80070057 (NS_ERROR_ILLEGAL_VALUE)"  location: "JS frame :: moz-src:///browser/components/downloads/DownloadsTaskbar.sys.mjs :: #windowsAttachIndicator :: line 181"  data: no]
+    [pid=37152] <gracefully close start>
+    [pid=37152][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+    [pid=37152][out] 
+    [pid=37152][out]         ERROR: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIRemoteDebuggingPipe.sendMessage] send@chrome://juggler/content/components/Juggler.js:135:18
+    [pid=37152][out] _dispatch@chrome://juggler/content/protocol/Dispatcher.js:76:24
+    [pid=37152][out] #onQuitApplicationGranted@moz-src:///browser/components/sessionstore/SessionStore.sys.mjs:2359:19
+    [pid=37152][out] observe@moz-src:///browser/components/sessionstore/SessionStore.sys.mjs:991:39
+    [pid=37152][out] observe/browserHandler<@chrome://juggler/content/components/Juggler.js:144:16
+    [pid=37152][out] Browser.close@chrome://juggler/content/protocol/BrowserHandler.js:156:10
+    [pid=37152][out] 
+    [pid=37152][err] JavaScript error: chrome://juggler/content/components/Juggler.js, line 135: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIRemoteDebuggingPipe.sendMessage]
+    [pid=37152][out]       console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://gre/modules/AsyncShutdown.sys.mjs :: observe :: line 588"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/oauth-callback.html" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://gre/modules/AsyncShutdown.sys.mjs :: observe :: line 588"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "http://127.0.0.1:4173/product-spec-workspace/oauth-callback.html?state=3367d238-bf29-44eb-8634-20dfddd79946&code=fake-one-use-code" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://gre/modules/AsyncShutdown.sys.mjs :: observe :: line 588"  data: no]
+    [pid=37152][out] console.warn: WindowsJumpLists: "Failed to fetch favicon for " "https://tokendance.space/auth?app_url=app%3A%2F%2Fpsw-product-specification-workspace&key_name=PSW+%E4%BA%A7%E5%93%81%E8%A7%84%E8%8C%83%E5%8D%8F%E4%BD%9C&code_challenge=J1rDV58SySyF7PO-HG76EVe_ZkigZwzFeM5ErxvsvAA&code_challenge_method=S256&callback_url=http%3A%2F%2F127.0.0.1%3A4173%2Fproduct-spec-workspace%2Foauth-callback.html%3Fstate%3D3367d238-bf29-44eb-8634-20dfddd79946" [Exception... "Failure"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://gre/modules/AsyncShutdown.sys.mjs :: observe :: line 588"  data: no]
+
+    Error Context: test-results\workspace-component-proper-f4dd2-yboard-dialog-returns-focus-firefox\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\workspace-component-proper-f4dd2-yboard-dialog-returns-focus-firefox\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\workspace-component-proper-f4dd2-yboard-dialog-returns-focus-firefox\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [firefox] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus 
+  53 passed (6.3m)

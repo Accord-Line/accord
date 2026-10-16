@@ -1,0 +1,31 @@
+[WebServer] (node:10220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:31808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:26844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:37856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [firefox] › tests\e2e\workspace.spec.ts:28:1 › four useful tabs, first-area BYOK, direct Markdown and corner tools; no automatic external calls (12.5s)
+  ok  2 [firefox] › tests\e2e\workspace.spec.ts:40:1 › five free-written requirements, incomplete typing, edit and refresh preserve stable indices (5.5s)
+  ok  3 [firefox] › tests\e2e\workspace.spec.ts:50:1 › offline editing, undo/redo, explicit approval and rollback make real new revisions (4.5s)
+  ok  4 [firefox] › tests\e2e\workspace.spec.ts:58:1 › real controls change hover transform, review data and handoff reimport keeps parameters (4.9s)
+  ok  5 [firefox] › tests\e2e\workspace.spec.ts:73:1 › fixed proposal is explicitly imported, recipe validation blocks success, approved r2 has complete links (3.8s)
+  ok  6 [firefox] › tests\e2e\workspace.spec.ts:83:1 › simulated BYOK response creates a candidate only; Key absent from storage and exports, cleared after reload (5.5s)
+  ok  7 [firefox] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 401 keeps text, sends once and shows useful failure (3.1s)
+  ok  8 [firefox] › tests\e2e\workspace.spec.ts:92:33 › simulated HTTP 429 keeps text, sends once and shows useful failure (1.3s)
+  ok  9 [firefox] › tests\e2e\workspace.spec.ts:97:1 › simulated network and invalid proposal never replace manual prose or create false success (1.3s)
+  ok 10 [firefox] › tests\e2e\workspace.spec.ts:102:1 › editing while a simulated model request is running makes candidate stale (2.7s)
+  ok 11 [firefox] › tests\e2e\workspace.spec.ts:110:1 › simulated PKCE popup callback exchanges code and verifier without persisting credentials (1.5s)
+  ok 12 [firefox] › tests\e2e\workspace.spec.ts:118:1 › malicious imports leave original data and do not execute Markdown scripts (1.2s)
+  ok 13 [firefox] › tests\e2e\workspace.spec.ts:123:1 › two tabs detect CAS conflict and preserve the unsaved page for backup (2.2s)
+  ok 14 [firefox] › tests\e2e\workspace.spec.ts:129:1 › 100 requirements stay directly editable and Markdown import becomes the actual document (2.7s)
+  ok 15 [firefox] › tests\e2e\workspace.spec.ts:136:1 › component properties enter the real draft; unsupported data cannot replace it; keyboard dialog returns focus (2.5s)
+  ok 16 [firefox] › tests\e2e\workspace.spec.ts:142:1 › reduced motion is explicit and imported image URLs require a user click (2.0s)
+  ok 17 [firefox] › tests\e2e\workspace.spec.ts:146:1 › candidate can become editable prose before any approval and can still be rejected (2.3s)
+  ok 18 [firefox] › tests\e2e\workspace.spec.ts:152:1 › cancelling a slow simulated request records its stage and elapsed time once without leaking a key (2.8s)
+
+  18 passed (1.5m)

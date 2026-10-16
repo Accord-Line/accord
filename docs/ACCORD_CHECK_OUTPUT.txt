@@ -1,0 +1,50 @@
+
+> accord-workspace@0.3.0-preview check
+> npm run lint && npm test && npm run build
+
+
+> accord-workspace@0.3.0-preview lint
+> eslint .
+
+
+> accord-workspace@0.3.0-preview test
+> vitest run
+
+
+ RUN  v3.2.7 C:/Users/acer/Documents/Codex/2026-10-15/files-mentioned-by-the-user-acceptance/outputs/product-spec-workspace
+
+ ✓ tests/reading-diff.test.ts (4 tests) 9ms
+ ✓ tests/contracts.test.ts (42 tests) 55ms
+ ✓ tests/storage.test.ts (6 tests) 59ms
+ ✓ tests/workspace.test.ts (20 tests) 139ms
+ ✓ tests/m2-m4.test.ts (28 tests) 345ms
+
+ Test Files  5 passed (5)
+      Tests  100 passed (100)
+   Start at  14:15:48
+   Duration  4.20s (transform 924ms, setup 0ms, collect 9.67s, tests 609ms, environment 1ms, prepare 4.60s)
+
+
+> accord-workspace@0.3.0-preview build
+> npm run check:types && npm run typecheck && vite build
+
+
+> accord-workspace@0.3.0-preview check:types
+> node scripts/generate-types.mjs --check
+
+
+> accord-workspace@0.3.0-preview typecheck
+> tsc --noEmit
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 489 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                       0.95 kB │ gzip:   0.56 kB
+dist/assets/index-CH8Q5hkn.css       37.71 kB │ gzip:   8.58 kB
+dist/assets/react-C8btWU0T.js        12.11 kB │ gzip:   4.28 kB
+dist/assets/zip-DV0zTvPz.js          96.87 kB │ gzip:  29.92 kB
+dist/assets/validation-B8fN10Qd.js  135.07 kB │ gzip:  41.60 kB
+dist/assets/index-CORh7zBD.js       477.49 kB │ gzip: 150.86 kB
+✓ built in 8.61s

@@ -1,0 +1,12 @@
+Accord / 共识
+Copyright 2026 Accord contributors
+
+Original project code is licensed under the Apache License, Version 2.0.
+Product Specification Workspace (PSW) is the former project name. Its schema
+identifiers, local database names and portable file prefixes are retained for
+compatibility and do not create a separate product.
+
+Third-party packages and fonts retain their respective licenses. Full runtime
+notices are in THIRD_PARTY_NOTICES.txt. Font provenance and SIL OFL texts are in
+public/fonts/. IntentKit is an independent project used as a factual example
+and visual reference; its license and ownership are not changed by this project.
